@@ -16,15 +16,14 @@ router.post("/", (req, res) => {
         title: req.body.title,
         description: req.body.description
     });
+    try {
     todo.save()
         .then(data => {
             res.json(data);
         })
-        .catch(err => {
-            res.json({
-                message: err
-            })
-        })
+    }catch (err) {
+            res.json(err);
+        }
 });
 router.get('/:todoId', async (req, res) => {
     try {
