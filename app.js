@@ -21,7 +21,7 @@ mongoose.connect(process.env.DB_CONNECTION, {
         useUnifiedTopology: true
     })
     .then(() => {
-        console.log("MongoDB Connected…")
+        alert("MongoDB Connected…")
     })
     .catch(err => console.log(err))
 //Listening to the server
