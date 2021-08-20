@@ -26,4 +26,4 @@ mongoose.connect(process.env.DB_CONNECTION, {
     .catch(err => console.log(err))
 //Listening to the server
 const port = process.env.port || 3000;
-app.listen(3000, () => console.log(`App is running on port http://localhost:${port}`));
+app.listen(port, () => console.log(`App is running on port http://localhost:${port}`));
