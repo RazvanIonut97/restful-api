@@ -13,6 +13,7 @@ const todoRoutes = require('./routes/todos');
 app.use('/todos', todoRoutes);
 app.get('/', (req, res) => {
     res.send("Gei de coaie sa ma iei")
+    console.log("das")
 });
 
 //Database connection
@@ -21,9 +22,9 @@ try{mongoose.connect(process.env.DB_CONNECTION, {
     useUnifiedTopology: true
 })
 .then(() => {
-    alert("MongoDB Connected…")
+    console.log("MongoDB Connected…")
 })}
-catch(err) {alert(err)}
+catch(err) {console.log(err)}
 //Listening to the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`App is running on port http://localhost:${port}`));
