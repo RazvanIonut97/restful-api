@@ -24,7 +24,7 @@ try{mongoose.connect(process.env.DB_CONNECTION, {
 .then(() => {
     console.log("MongoDB Connected…")
 })}
-catch(err) {console.log(err)}
+catch(err) {console.log("NUUUUUUUUUUUUUUUUUU")}
 //Listening to the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`App is running on port http://localhost:${port}`));
