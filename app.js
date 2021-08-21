@@ -20,11 +20,10 @@ app.get('/', (req, res) => {
 try{mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-})
-.then(() => {
+}).then(() => {
     console.log("MongoDB Connected…")
 })}
-catch(err) {console.log("NUUUUUUUUUUUUUUUUUU")}
+catch(err) {console.log(err)}
 //Listening to the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`App is running on port http://localhost:${port}`));
