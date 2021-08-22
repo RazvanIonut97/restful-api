@@ -5,27 +5,47 @@ const Todo = require('../models/Todo');
 
 router.get('/', async (req, res) => {
     try {
-        const todos = await Todo.find();
+        const todos = await Todo.find().sort({position:1});
         res.json(todos);
     } catch (err) {
         res.json(err);
     }
 });
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
     const todo = new Todo({
         title: req.body.title,
         description: req.body.description,
-        position:req.body.position
+        position: 1
     });
-    try {
-    todo.save()
-        .then(data => {
-            res.json(data);
-        })
-    }catch (err) {
-            res.json(err);
+    //Updates the position of the other existing items starting from  2    
+    const todos = await Todo.find().sort({position:1});
+    let num = 2;
+    todos.forEach(async todo => {
+        try {
+            await Todo.updateOne({
+                _id: todo._id
+            }, {
+                $set: {
+                    position: num++
+                }
+            });
+        } catch (err) {
+            res.json({
+                message: err
+            })
         }
+    });
+    //Adding the new item
+    try {
+        await todo.save()
+            .then(data => {
+                res.json(data);
+            })
+    } catch (err) {
+        res.json(err);
+    }
 });
+
 router.get('/:todoId', async (req, res) => {
     try {
         const todo = await Todo.findById(req.params.todoId);
@@ -61,7 +81,6 @@ router.patch('/:todoId', async (req, res) => {
             }
         });
         res.json(updatedTodo);
-        console.log('da')
 
     } catch (err) {
         res.json({
