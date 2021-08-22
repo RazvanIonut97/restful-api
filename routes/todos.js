@@ -14,7 +14,8 @@ router.get('/', async (req, res) => {
 router.post("/", (req, res) => {
     const todo = new Todo({
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        position:req.body.position
     });
     try {
     todo.save()
@@ -55,7 +56,8 @@ router.patch('/:todoId', async (req, res) => {
         }, {
             $set: {
                 title: req.body.title,
-                description: req.body.description
+                description: req.body.description,
+                position: req.body.position
             }
         });
         res.json(updatedTodo);
