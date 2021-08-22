@@ -12,6 +12,10 @@ const TodoSchema=mongoose.Schema({
     date:{
         type:Date,
         default:Date.now
+    },
+    position:{
+        type:Number,
+        require:true
     }
 });
 module.exports=mongoose.model('Todos',TodoSchema);
