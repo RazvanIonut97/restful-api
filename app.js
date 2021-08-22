@@ -12,8 +12,8 @@ app.use(cors());
 const todoRoutes = require('./routes/todos');
 app.use('/todos', todoRoutes);
 app.get('/', (req, res) => {
-    res.send("Gei de coaie sa ma iei")
-    console.log("das")
+    res.send("This is a simple api")
+    
 });
 
 //Database connection
