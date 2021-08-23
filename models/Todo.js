@@ -1,9 +1,11 @@
 const mongoose=require('mongoose');
-
-const TodoSchema=mongoose.Schema({
+const TodoSchema= new mongoose.Schema({
+    isDone:{
+        type:Boolean,
+        default:false},
     title:{
         type:String,
-        require:true
+        required:true
     },
     date:{
         type:Date,
@@ -11,11 +13,10 @@ const TodoSchema=mongoose.Schema({
     },
     position:{
         type:Number,
-        require:true
+        default:1
     },
-    isDone:{
-        Type: Boolean,
-        default: false
-    }
+    
+
 });
-module.exports=mongoose.model('Todos',TodoSchema);
+
+module.exports=mongoose.model('Todo',TodoSchema);
