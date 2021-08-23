@@ -12,6 +12,10 @@ const TodoSchema=mongoose.Schema({
     position:{
         type:Number,
         require:true
+    },
+    isDone:{
+        Type: Boolean,
+        default: false
     }
 });
 module.exports=mongoose.model('Todos',TodoSchema);
